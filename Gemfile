@@ -29,6 +29,9 @@ gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'gravatar_image_tag', '~> 1.2'
 gem 'carrierwave', '~> 2.1'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
+gem 'stripe'
+# gem 'graphicsmagick', '~> 1.0', '>= 1.0.6'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -60,3 +63,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "binding_of_caller"
