@@ -1,0 +1,65 @@
+<% content_for :body_class, 'bg-light' %>
+
+<section class="section rod-show">
+  <div class="columns">
+    <div class="column is-8">
+
+      <h1 class="title is-2 has-text-black "><%= @rod.title %></h1>
+      <div style="width:400px; height:auto">
+        <%= image_tag(@rod.image, style: 'width:50%')if @rod.image.attached?%>
+      </div>
+
+      <div class="content pa4 mt3 bg-white border-radius-3">
+
+      <h3 class="subtitle is-4">Description</h3>
+      <%= @rod.description %>
+
+
+      <h3 class="subtitle is-4 pt5">Product Specs</h3>
+
+      <table class="table is-narrow">
+
+        <% if @rod.brand %>
+          <tr>
+            <td class="has-text-weight-bold">Brand:</td>
+            <td><%= @rod.brand %></td>
+          </tr>
+        <% end %>
+        <% if @rod.stock_quantity %>
+          <tr>
+            <td class="has-text-weight-bold">Quantity:</td>
+            <td><%= @rod.stock_quantity %></td>
+          </tr>
+        <% end %>
+
+        <% if @rod.color %>
+          <tr>
+            <td class="has-text-weight-bold">Color:</td>
+            <td><%= @rod.color %></td>
+          </tr>
+        <% end %>
+
+        <% if @rod.size %>
+          <tr>
+            <td class="has-text-weight-bold">Size:</td>
+            <td><%= @rod.size %> m</td>
+          </tr>
+        <% end %>
+
+      </table>
+    </div>
+    </div>
+    <div class="column is-3 is-offset-1">
+      <div class="bg-whiteblack pa4 border-radius-3">
+        <h4 class="title is-3 has-text-centered has-text-black-bis"><%= number_to_currency(@rod.price) %></h4>
+        <p class="has-text-centered mb4">Sold by <%= @rod.user.name%></p>
+        <%= button_to 'Add to cart', line_items_path(rod_id: @rod), class: 'button is-warning add-to-cart'%>
+      </div>
+    </div>
+  </div>
+
+  <% if rod_author(@rod) %>
+    <%= link_to 'Edit', edit_rod_path(@rod), class: 'button' %>
+    <%= link_to 'Back', rods_path, class: 'button' %>
+  <% end %>
+</section>

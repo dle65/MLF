@@ -1,0 +1,41 @@
+<div class="columns is-multiline">
+    <%= render partial: 'rods/index',
+              collection: @rod %>
+
+</div>
+<p>
+  Found <%= pluralize(@rods.size, 'result')%> results
+  for the search term "<%= params[:search_term]%>"
+</p>
+<% content_for :header do%>
+<section class="hero is-warning">
+<div class="hero-body">
+  <div class="container">
+  <h1 class="title">
+   The lastest products
+  </h1>
+  </div>
+  </div>
+  </section>
+  <% end %>
+
+
+  <div class="rod-index-grid pt4">
+    <% @rods.each do|rod| %>
+    <div class="rod border-light">
+    <div class="pa3">
+      <h3 class="fw7 f4 title"><%= link_to rod.title, rod %></h3>
+      <div style="width:400px; height:auto">
+        <%= image_tag(rod.image, style: 'width:50%')%>
+        </div>
+      <p class="has-text-left mb4">Sold by <%= rod.user.name%></p>
+      <p class="f3 fw6 has-text-right pt2 price"><%= number_to_currency(rod.price) %></p>
+      <% if rod_author(rod) %>
+         <%= link_to 'Edit', edit_rod_path(rod), class: "button is-small" %>
+         <%= link_to 'Delete', rod, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
+      <% end %>
+    </div>
+    </div>
+
+    <% end %>
+  </div>
