@@ -1,0 +1,24 @@
+<h1 class="title is-1 has-text-black">We need your feedback!</h1>
+
+<div class="skinny_wrapper wrapper_padding">
+<%= form_for @contact do |f|%>
+<%= f.label :name%><br>
+<%= f.text_field :name, require: true%>
+<br>
+
+<%= f.label :email%><br>
+<%= f.text_field :email, require: true%>
+<br>
+
+<%= f.label :message%><br>
+<%= f.text_area :message, as: :text%>
+<br>
+
+<div class="hidden">
+  <%= f.label :nickname%><br>
+  <%= f.text_field :nickname, hint: 'leave this filed blank'%>
+</div>
+<%= f.submit 'Send Message', class: "button"%>
+<% end %>
+</div>
+
